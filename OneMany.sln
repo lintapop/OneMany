@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneMany", "OneMany\OneMany.csproj", "{8BA294B7-AF52-400A-8A71-9526E15BCADA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BA294B7-AF52-400A-8A71-9526E15BCADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BA294B7-AF52-400A-8A71-9526E15BCADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BA294B7-AF52-400A-8A71-9526E15BCADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BA294B7-AF52-400A-8A71-9526E15BCADA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4958FC37-D180-4885-8A84-298F28452935}
+	EndGlobalSection
+EndGlobal
