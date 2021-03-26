@@ -1,0 +1,50 @@
+﻿@model OneMany.Models.Permission
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Permission</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Permissions.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Permissions.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -6,52 +6,134 @@
 
 <h2>Create</h2>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>User</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new
+        {
+            @class = "text-danger"
+        })
         <div class="form-group">
-            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.email, htmlAttributes: new
+            {
+                @class = "control-label col-md-2"
+            })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.email, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control"
+                    }
+                })
+                @Html.ValidationMessageFor(model => model.email, "", new
+                {
+                    @class = "text-danger"
+                })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.name, htmlAttributes: new
+            {
+                @class = "control-label col-md-2"
+            })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.name, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control"
+                    }
+                })
+                @Html.ValidationMessageFor(model => model.name, "", new
+                {
+                    @class = "text-danger"
+                })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.password, htmlAttributes: new
+            {
+                @class = "control-label col-md-2"
+            })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.password, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control"
+                    }
+                })
+                @Html.ValidationMessageFor(model => model.password, "", new
+                {
+                    @class = "text-danger"
+                })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.tel, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Authority, htmlAttributes: new
+            {
+                @class = "control-label col-md-2"
+            })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.tel, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.tel, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Authority, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control"
+                    }
+                })
+                @Html.ValidationMessageFor(model => model.Authority, "", new
+                {
+                    @class = "text-danger"
+                })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.departmentID, "departmentID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.tel, htmlAttributes: new
+            {
+                @class = "control-label col-md-2"
+            })
             <div class="col-md-10">
-                @Html.DropDownList("departmentID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.departmentID, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.tel, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control"
+                    }
+                })
+                @Html.ValidationMessageFor(model => model.tel, "", new
+                {
+                    @class = "text-danger"
+                })
+            </div>
+        </div>
+
+        <div class="treeview">
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.departmentID, "departmentID", htmlAttributes: new
+            {
+                @class = "control-label col-md-2"
+            })
+            <div class="col-md-10">
+                @Html.DropDownList("departmentID", null, htmlAttributes: new
+                {
+                    @class = "form-control"
+                })
+                @Html.ValidationMessageFor(model => model.departmentID, "", new
+                {
+                    @class = "text-danger"
+                })
             </div>
         </div>
 
@@ -67,6 +149,28 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+<script src="~/Scripts/tree.min.js"></script>
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        let data =@Html.Raw(ViewBag.tree);
+
+let tree = new Tree('.treeview', {
+data: [{ id: '-1', text: 'root', children: data }],
+closeDepth: 3,
+loaded: function () {
+this.values = ['0-0-0', '0-1-1'];
+console.log(this.selectedNodes)
+console.log(this.values)
+this.disables = ['0-0-0', '0-0-1', '0-0-2']
+},
+onChange: function () {
+    console.log(this.values);
+    $("#Authority").val(this.values);
+}
+})
+    </script>
+
 }

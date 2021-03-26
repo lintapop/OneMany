@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\PermissionsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Controllers\DepartmentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -144,10 +145,19 @@
     <Compile Include="Migrations\202103260707296_salt.Designer.cs">
       <DependentUpon>202103260707296_salt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103260844292_recsv.cs" />
+    <Compile Include="Migrations\202103260844292_recsv.Designer.cs">
+      <DependentUpon>202103260844292_recsv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103260848026_d.cs" />
+    <Compile Include="Migrations\202103260848026_d.Designer.cs">
+      <DependentUpon>202103260848026_d.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\Model1.cs" />
+    <Compile Include="Models\Permission.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Utility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -172,6 +182,11 @@
     <Content Include="Areas\Admin\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Permissions\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Permissions\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Permissions\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Permissions\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Permissions\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -183,6 +198,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\tree.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -231,6 +247,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103260707296_salt.resx">
       <DependentUpon>202103260707296_salt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103260844292_recsv.resx">
+      <DependentUpon>202103260844292_recsv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103260848026_d.resx">
+      <DependentUpon>202103260848026_d.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

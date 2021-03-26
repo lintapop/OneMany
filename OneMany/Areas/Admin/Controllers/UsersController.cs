@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using OneMany.Models;
@@ -39,8 +40,35 @@ namespace OneMany.Areas.Admin.Controllers
         // GET: Admin/Users/Create
         public ActionResult Create()
         {
+            StringBuilder sb = new StringBuilder();
             ViewBag.departmentID = new SelectList(db.Departments, "Id", "dpname");
+            var userData = db.Permissions.ToList();
+            sb.Append("[");
+            sb.Append(GetPermission(userData.Where(x => x.Pid == null).ToList()));  //find root item,  ==null IS ROOT
+            sb.Append("]");
+            ViewBag.tree = sb.ToString(); //tree is self defined name
             return View();
+        }
+
+        //build a tree structure
+        public string GetPermission(ICollection<Permission> list)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var permission in list)
+            {
+                sb.Append("{\"id\":\"" + permission.PValue + "\",\"text\":\"" + permission.Name + "\"");
+                if (permission.PermissionSon.Count > 0)
+                {
+                    sb.Append(",\"children\":[");
+                    //recursion
+                    sb.Append(GetPermission(permission.PermissionSon));
+                    sb.Append("]");
+                }
+                // the case of no children
+                sb.Append("},");
+                sb.ToString().TrimEnd(',');
+            }
+            return sb.ToString();
         }
 
         // POST: Admin/Users/Create
@@ -122,7 +150,9 @@ namespace OneMany.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Create()
+        //GET
+
+        public ActionResult Login()
         {
             return View();
         }
@@ -136,8 +166,19 @@ namespace OneMany.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.LoginViewModels.Add(loginViewModel);
-                db.SaveChanges();
+                var user = db.Users.FirstOrDefault(x => x.name == loginViewModel.Account); //connect to database
+                if (user == null)
+                {
+                    TempData["error"] = "登入失敗"; //show login error message
+                    return View(loginViewModel);
+                }
+                string password = Utility.GenerateHashWithSalt(loginViewModel.password, user.PasswordSalt);
+                //compare input and password
+                if (user.password != password)
+                {
+                    TempData["error"] = "登入失敗"; //密碼錯誤
+                    return View(loginViewModel);
+                }
                 return RedirectToAction("Index");
             }
 
