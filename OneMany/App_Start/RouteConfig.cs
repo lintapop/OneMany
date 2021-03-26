@@ -16,7 +16,8 @@ namespace OneMany
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new string[] { "OneMany.Controllers" }  //告知是連到外層
             );
         }
     }

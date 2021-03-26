@@ -38,5 +38,12 @@ namespace OneMany.Models
         //先設一個外部關聯的key 在把key傳到這個表單的另一個prop
         [ForeignKey("departmentID")]
         public virtual Department Department { get; set; }
+
+        [Display(Name = "密碼鹽")]
+        [MaxLength(100)]
+        public string PasswordSalt { get; set; }
+
+        [Display(Name = "權限")]
+        public string Authority { get; set; }
     }
 }
